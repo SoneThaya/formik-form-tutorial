@@ -42,11 +42,12 @@ function YoutubeForm() {
     validate
   })
 
-  // console.log('form values', formik.values)
+  console.log('form errors', formik.errors)
 
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
+        <div className='form-control'>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -55,7 +56,10 @@ function YoutubeForm() {
           onChange={formik.handleChange}
           value={formik.values.name}
         />
+          {formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+        </div>
 
+        <div className='form-control'>
         <label htmlFor="email">E-mail</label>
         <input
           type="text"
@@ -64,7 +68,10 @@ function YoutubeForm() {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
+          {formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+        </div>
 
+        <div className='form-control'>
         <label htmlFor="channel">Channel</label>
         <input
           type="text"
@@ -73,6 +80,8 @@ function YoutubeForm() {
           onChange={formik.handleChange}
           value={formik.values.channel}
         />
+          {formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+        </div>
 
         <button type='submit'>Submit</button>
       </form>
